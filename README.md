@@ -2,6 +2,10 @@
 
 This is movement api.
 
+## 如果是linux下请先执行
+```
+echo fs.inotify.max_user_watches=52428 | sudo tee -a /etc/sysctl.conf & sudo sysctl -p
+```
 ## QuickStart
 
 <!-- add docs here for user -->
