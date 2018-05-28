@@ -8,7 +8,7 @@ class SchollController extends Controller {
         const name = ctx.query.adminname;
         const pwd = ctx.query.adminpwd;
         const result = await ctx.service.scholl.isHave({ adminname: name, adminpwd: pwd });
-        if (result.length === 1) {
+        if (result) {
             ctx.body = { status: 1 };
         } else {
             ctx.body = { status: 0 };

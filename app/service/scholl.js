@@ -11,8 +11,8 @@ class Scholl extends Service {
     }
 
     async isHave(map) {
-        const result = await this.app.mysql.select(tableName,
-            { where: map });
+        const result = await this.app.mysql.get(tableName,
+            map);
         return result;
     }
 

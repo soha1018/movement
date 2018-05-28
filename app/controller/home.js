@@ -7,14 +7,25 @@ const ejs = require('ejs');
 
 class HomeController extends Controller {
   async index() {
-    const { ctx } = this;
-    await ctx.render('index.ejs');
+    this.ctx.body = { status: '0' };
   }
+  /**
+   * 后台登录界面
+   */
   async login() {
     const { ctx } = this;
     await ctx.render('login.ejs');
   }
-
+  /**
+   * 后台主页
+   */
+  async admin() {
+    const { ctx } = this;
+    await ctx.render('index.ejs');
+  }
+  /**
+   * 获取对应的单页面
+   */
   async getPage() {
     const { ctx } = this;
     const pageName = ctx.query.pagename;

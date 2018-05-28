@@ -1,1 +1,62 @@
-<h1>todynews</h1>
+<div id="todynews">
+    <div style="position:  relative;height: 50px;">
+        <button id="addnews" type="button" class="btn btn-block btn-info btn-lg" style="width: 100px;position:  absolute;right: 0px;">添加</button>
+    </div>
+    <div class="col" id="list">
+        <div class="col-md-3">
+            <div class="box box-widget">
+                <div class="box-header with-border">
+                    <div class="user-block">
+                        <img class="img-circle" src="/public/dist/img/user1-128x128.jpg" alt="User Image">
+                        <span class="username">
+                            <a href="#">Jonathan Burke Jr.</a>
+                        </span>
+                        <span class="description">Shared publicly - 7:30 PM Today</span>
+                    </div>
+                    <div class="box-tools">
+                        <button type="button" class="btn btn-box-tool" data-widget="remove" uid='1'>
+                            <i class="fa fa-times"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="box-body" style="display: block;">
+                    <img class="img-responsive pad" src="/public/dist/img/photo2.png" alt="Photo">
+                    <p>I took this photo this morning. What do you guys think?</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 添加页面 -->
+<div class="col-md-9" id='addnewpage' style="display: none;">
+    <div class="box box-primary">
+        <div class="box-header with-border">
+            <h3 class="box-title">添加一条新闻</h3>
+        </div>
+        <div class="box-body">
+            <div class="form-group">
+                <input class="form-control" placeholder="标题:" id="title">
+            </div>
+            <div class="form-group">
+                <textarea id="compose-textarea" class="form-control" style="height: 300px">
+                          </textarea>
+            </div>
+            <div class="form-group">
+                <div class="btn btn-default btn-file">
+                    <i class="fa fa-paperclip"></i> Attachment
+                    <input type="file" name="attachment">
+                </div>
+                <p class="help-block">Max. 32MB</p>
+            </div>
+        </div>
+        <div class="box-footer">
+            <div class="pull-right">
+                <button type="reset" class="btn btn-default" id="cacul">
+                    <i class="fa fa-times"></i>取消</button>
+                <button type="submit" class="btn btn-primary" id="ok">
+                    <i class="fa fa-envelope-o"></i> 确定</button>
+            </div>
+        </div>
+    </div>
+</div>
