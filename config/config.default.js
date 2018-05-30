@@ -15,31 +15,42 @@ module.exports = appInfo => {
     }
   }
 
+  config.session = {
+    key: 'EGG_SESS',
+    maxAge: 24 * 3600 * 1000, // 1 天
+    httpOnly: true,
+    encrypt: true,
+  };
+
+  config.multipart = {
+    fileExtensions: ['.xlsx'], // 增加对 .xlsx 扩展名的支持
+  }
   // config.default.js
   // errorPageUrl support funtion
   config.onerror = {
     errorPageUrl: (err, ctx) => ctx.errorPageUrl || '/500',
+
   };
 
-  // config.mysql = {
-  //   // 单数据库信息配置
-  //   client: {
-  //     // host
-  //     host: 'localhost',
-  //     // 端口号
-  //     port: '3306',
-  //     // 用户名
-  //     user: 'root',
-  //     // 密码
-  //     password: '123456',
-  //     // 数据库名
-  //     database: 'movement',
-  //   },
-  //   // 是否加载到 app 上，默认开启
-  //   app: true,
-  //   // 是否加载到 agent 上，默认关闭
-  //   agent: false,
-  // };
+  config.mysql = {
+    // 单数据库信息配置
+    client: {
+      // host
+      host: 'localhost',
+      // 端口号
+      port: '3306',
+      // 用户名
+      user: 'root',
+      // 密码
+      password: '123456',
+      // 数据库名
+      database: 'movement',
+    },
+    //是否加载到 app 上，默认开启
+    app: true,
+    // 是否加载到 agent 上，默认关闭
+    agent: false,
+  };
   config.security = {
     csrf: false,
   }
