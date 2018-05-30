@@ -15,10 +15,21 @@ module.exports = appInfo => {
     }
   }
 
+  config.session = {
+    key: 'EGG_SESS',
+    maxAge: 24 * 3600 * 1000, // 1 天
+    httpOnly: true,
+    encrypt: true,
+  };
+
+  config.multipart = {
+    fileExtensions: ['.xlsx'], // 增加对 .xlsx 扩展名的支持
+  }
   // config.default.js
   // errorPageUrl support funtion
   config.onerror = {
     errorPageUrl: (err, ctx) => ctx.errorPageUrl || '/500',
+
   };
 
   // config.mysql = {

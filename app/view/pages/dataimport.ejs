@@ -1,5 +1,11 @@
 <div class="row">
     <div class="col-md-3 col-sm-6 col-xs-12">
+        <form action="/admin/uploadexcel?_csrf={{ ctx.csrf |  safe }}" method="post" enctype="multipart/form-data">
+            <input type="text" name="tag" value="add" style="display: none;">
+            <input type="file" name="file" style="position:  absolute;height: 100%;width: 100%;opacity: 0;" accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet">
+            <button type="submit" class="btn btn-block btn-success btn-lg" style="position:  absolute;width: 100px;bottom: 20px;right: 50px;display:  none;">上传</button>
+        </form>
+
         <div class="info-box">
             <span class="info-box-icon bg-aqua">
                 <i class="ion ion-ios-gear-outline"></i>
@@ -8,15 +14,19 @@
             <div class="info-box-content">
                 <span class="info-box-text">批量导入</span>
                 <span class="info-box-number">学生信息
-                    <!-- <small>%</small> -->
                 </span>
             </div>
-            <!-- /.info-box-content -->
         </div>
-        <!-- /.info-box -->
     </div>
+
     <!-- /.col -->
     <div class="col-md-3 col-sm-6 col-xs-12">
+        <form action="/admin/uploadexcel?_csrf={{ ctx.csrf |  safe }}" method="post" enctype="multipart/form-data">
+            <input type="text" name="tag" value="del" style="display: none;">
+            <input type="file" name="file" style="position:  absolute;height: 100%;width: 100%;opacity: 0;" accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet">
+            <button type="submit" class="btn btn-block btn-success btn-lg" style="position:  absolute;width: 100px;bottom: 20px;right: 50px;display:  none;">上传</button>
+        </form>
+
         <div class="info-box">
             <span class="info-box-icon bg-red">
                 <i class="fa fa-google-plus"></i>
@@ -26,16 +36,18 @@
                 <span class="info-box-text">批量删除</span>
                 <span class="info-box-number">学生信息</span>
             </div>
-            <!-- /.info-box-content -->
         </div>
-        <!-- /.info-box -->
     </div>
-    <!-- /.col -->
 
-    <!-- fix for small devices only -->
     <div class="clearfix visible-sm-block"></div>
 
     <div class="col-md-3 col-sm-6 col-xs-12">
+        <form action="/admin/uploadexcel?_csrf={{ ctx.csrf |  safe }}" method="post" enctype="multipart/form-data">
+            <input type="text" name="tag" value="change" style="display: none;">
+            <input type="file" name="file" style="position:  absolute;height: 100%;width: 100%;opacity: 0;" accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet">
+            <button type="submit" class="btn btn-block btn-success btn-lg" style="position:  absolute;width: 100px;bottom: 20px;right: 50px;display:  none;">上传</button>
+        </form>
+
         <div class="info-box">
             <span class="info-box-icon bg-green">
                 <i class="ion ion-ios-cart-outline"></i>
@@ -45,12 +57,10 @@
                 <span class="info-box-text">批量修改</span>
                 <span class="info-box-number">学生信息</span>
             </div>
-            <!-- /.info-box-content -->
         </div>
-        <!-- /.info-box -->
     </div>
-    <!-- /.col -->
     <div class="col-md-3 col-sm-6 col-xs-12">
+        <!-- <input type="file" name="file" style="position:  absolute;height: 100%;width: 100%;opacity: 0;" accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"> -->
         <div class="info-box">
             <span class="info-box-icon bg-yellow">
                 <i class="ion ion-ios-people-outline"></i>
@@ -60,11 +70,8 @@
                 <span class="info-box-text">导出</span>
                 <span class="info-box-number">学生信息</span>
             </div>
-            <!-- /.info-box-content -->
         </div>
-        <!-- /.info-box -->
     </div>
-    <!-- /.col -->
 </div>
 
 <div class="row">

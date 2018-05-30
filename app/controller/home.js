@@ -5,7 +5,11 @@ const fs = require('fs');
 const path = require('path');
 const ejs = require('ejs');
 
-class HomeController extends Controller {
+/**
+ * 获取页面的接口
+ */
+
+ class HomeController extends Controller {
   async index() {
     this.ctx.body = { status: '0' };
   }

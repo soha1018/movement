@@ -1,10 +1,17 @@
 
 //今日早报 -> 数据导入 -> 教学任务
-var pages = ['todynews', 'dataimport', 'scholltask']; //所有页面page的名称
+var pages = ['todynews', 'dataimport', 'scholltask', 'information', 'studentsinfo']; //所有页面page的名称
 const content = $('.content')[0];  //主内容
 
-const defaultPage = pages[2]; //默认显示主页
+const defaultPage = pages[1]; //默认显示主页
 const defaultPageData = window.localStorage.getItem(defaultPage);
+const ErrorMsg =
+    {
+        0: '失败',
+        100: '内容长度不能超过100',
+        12: '内容长度不能超过12',
+        11: '参数不全',
+    };
 
 initPage();
 
@@ -12,25 +19,11 @@ initPage();
  * 根据页面名称获取内容
  * @param {*} pageName 
  */
-function showPageByName(pageName, sucCallback) {
-    $.ajax({
-        url: '/admin/getpage',
-        type: 'get',
-        dataType: 'json',
-        data: { pagename: pageName },
-        success: function (data) {
-            if (data.status === 1) {
-                let page = data.html;
-                window.localStorage.setItem(pageName, page);   //对页面做一次缓存
-                setShowPage(pageName, page);
-                sucCallback();
-            } else {
-                alert('数据请求失败');
-            }
-        },
-        error: function (err) {
-            alert('服务器出错');
-        },
+function showPageByName(pageName) {
+    mhttp({ url: '/admin/getpage', data: { pagename: pageName } }, function (data) {
+        let page = data.html;
+        window.localStorage.setItem(pageName, page);   //对页面做一次缓存
+        setShowPage(pageName, page);
     });
 }
 
@@ -90,7 +83,7 @@ window.onunload = function () {
 
 function initPage() {
     if (!defaultPageData) {
-        showPageByName(defaultPage, function () { });
+        showPageByName(defaultPage);
     } else {
         setShowPage(defaultPage, defaultPageData);
     }
@@ -105,10 +98,45 @@ function initPage() {
             if (loadPage) {
                 setShowPage(pageName, loadPage);
             } else {
-                showPageByName(pageName, function () {
-                    loadPageScrpat(pageName);
-                });
+                showPageByName(pageName);
             }
         }
+    });
+}
+
+/**
+ * 传人参数是否为空
+ * @param {*} array 
+ */
+function isAjaxNull(...array) {
+    for (let index = 0; index < array.length; index++) {
+        const element = array[index];
+        if (element === 'undefined' || !element || element === '') {
+            return false;
+        }
+    }
+    return true;
+}
+
+/**
+ * @param {*} ajaxData 
+ * @param {*} sucCallback 
+ */
+function mhttp(ajaxData, sucCallback) {
+    $.ajax({
+        type: 'get',
+        url: ajaxData.url,
+        dataType: 'json',
+        data: ajaxData.data,
+        success: function (msg) {
+            if (msg.status == 1) {
+                sucCallback(msg);
+            } else {
+                alert(ErrorMsg[msg.status]);
+            }
+        },
+        error: function (err) {
+            alert('服务器出错');
+        },
     });
 }

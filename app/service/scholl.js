@@ -33,6 +33,11 @@ class Scholl extends Service {
             { where: { type: type } })
         return result;
     }
+    async update(map) {
+        const result = await this.app.mysql.update(tableName, map);
+        const updateSuccess = result.affectedRows === 1;
+        return updateSuccess;
+    }
 }
 
 module.exports = Scholl;

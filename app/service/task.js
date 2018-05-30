@@ -12,7 +12,7 @@ class Task extends Service {
 
     async del(id) {
         const result = await this.app.mysql.delete(tableName, {
-            content_id: id,
+            task_id: id,
         });
         return result;
     }
@@ -22,10 +22,15 @@ class Task extends Service {
         return results.reverse();
     }
 
-    async getAllByType(type) {
+    async getAllByMap(map) {
         const result = await this.app.mysql.select(tableName,
-            { where: { type: type } })
+            { where: map })
         return result;
+    }
+    async update(map) {
+        const result = await this.app.mysql.update(tableName, map);
+        const updateSuccess = result.affectedRows === 1;
+        return updateSuccess;
     }
 }
 
